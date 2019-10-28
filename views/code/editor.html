@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    #editor { 
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+</style>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+</head>
+<body>
+
+<div id="editor">
+    console.log()
+</div>
+    
+<script src="ace/ace.js" ></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+    editor.commands.addCommand({
+    name: 'myCommand',
+    bindKey: {win: 'Ctrl-S',  mac: 'Command-M'},
+    exec: function(editor) {
+      console.log("abdiel")
+    },
+    readOnly: true 
+});
+editor.find('console',{
+    backwards: false,
+    wrap: false,
+    caseSensitive: false,
+    wholeWord: false,
+    regExp: false,
+    preventScroll : true
+});
+ editor.findNext();
+editor.findPrevious();
+var edit = editor.selection.getCursor();
+
+editor.session.on('change', function(delta) {
+    console.log(delta)
+});
+
+console.log(text)
+
+</script>
+</body>
+</html>
